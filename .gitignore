@@ -1,0 +1,17 @@
+# eclipse settings
+.settings
+.profile
+.classpath
+.project
+.springBeans
+# idea settings
+.idea
+
+#
+*.war
+*.jar
+*.log
+*.iml
+
+#
+**/target
