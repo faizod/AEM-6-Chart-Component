@@ -125,7 +125,7 @@
                     <group>faizodChartComponent</group>
                     <embeddeds>
                         <embedded>
-                            <groupId>com.faizod.aem.component</groupId>
+                            <groupId>com.faizod.aem.components</groupId>
                             <artifactId>chart-component.core</artifactId>
                             <target>/apps/faizod/install</target>
                         </embedded>
