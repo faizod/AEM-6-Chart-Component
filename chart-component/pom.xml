@@ -14,14 +14,17 @@
  |  See the License for the specific language governing permissions and
  |  limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.faizod.aem.component</groupId>
     <artifactId>chart-component</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1</version>
+    <version>0.1-SNAPSHOT</version>
+
     <description>faizod AEM 6 Chart Component</description>
-    
+
     <modules>
         <module>core</module>
         <module>ui.apps</module>
@@ -170,7 +173,7 @@
                         </execution>
                     </executions>
                     <configuration>
-                               <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                        <outputDirectory>${project.build.directory}/classes</outputDirectory>
                     </configuration>
                     <dependencies>
                         <dependency>
@@ -276,7 +279,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -296,7 +299,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                         <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -317,13 +320,13 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
                         </lifecycleMappingMetadata>
                     </configuration>
-                </plugin>  
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -397,10 +400,10 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
-        <groupId>biz.aQute</groupId>
-        <artifactId>bndlib</artifactId>
-        <version>1.50.0</version>
-        <scope>provided</scope>
+                <groupId>biz.aQute</groupId>
+                <artifactId>bndlib</artifactId>
+                <version>1.50.0</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.osgi</groupId>
@@ -428,7 +431,7 @@
                 <version>6.0.0.1</version>
                 <scope>provided</scope>
             </dependency>
-            
+
             <dependency>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>org.apache.sling.models.api</artifactId>
@@ -462,7 +465,7 @@
                 <artifactId>cq-wcm-taglib</artifactId>
                 <version>5.7.4</version>
                 <scope>provided</scope>
-            </dependency>            
+            </dependency>
             <!-- Testing -->
             <dependency>
                 <groupId>junit</groupId>

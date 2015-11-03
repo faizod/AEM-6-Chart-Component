@@ -14,7 +14,8 @@
  |  See the License for the specific language governing permissions and
  |  limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!-- ====================================================================== -->
@@ -23,7 +24,7 @@
     <parent>
         <groupId>com.faizod.aem.component</groupId>
         <artifactId>chart-component</artifactId>
-        <version>0.0.1</version>
+        <version>0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -32,6 +33,7 @@
     <!-- ====================================================================== -->
     <artifactId>chart-component.ui.apps</artifactId>
     <packaging>content-package</packaging>
+
     <name>faizod AEM 6 Chart Component - UI apps</name>
     <description>UI apps package for faizod AEM 6 Chart Component</description>
 
@@ -158,8 +160,8 @@
                             <failOnError>true</failOnError>
                             <failOnMissingEmbed>true</failOnMissingEmbed>
                         </configuration>
-                     </plugin>
-                 </plugins>
+                    </plugin>
+                </plugins>
             </build>
         </profile>
         <profile>
@@ -181,12 +183,13 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <targetURL>http://${aem.publish.host}:${aem.publish.port}/crx/packmgr/service.jsp</targetURL>
+                            <targetURL>http://${aem.publish.host}:${aem.publish.port}/crx/packmgr/service.jsp
+                            </targetURL>
                             <failOnError>true</failOnError>
                             <failOnMissingEmbed>true</failOnMissingEmbed>
                         </configuration>
-                     </plugin>
-                 </plugins>
+                    </plugin>
+                </plugins>
             </build>
         </profile>
     </profiles>
@@ -198,7 +201,7 @@
         <dependency>
             <groupId>com.faizod.aem.component</groupId>
             <artifactId>chart-component.core</artifactId>
-            <version>0.0.1</version>
+            <version>0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>

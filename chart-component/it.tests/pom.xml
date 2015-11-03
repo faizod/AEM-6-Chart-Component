@@ -23,7 +23,7 @@
     <parent>
         <groupId>com.faizod.aem.component</groupId>
         <artifactId>chart-component</artifactId>
-        <version>0.0.1</version>
+        <version>0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -101,7 +101,7 @@
         <dependency>
             <groupId>com.faizod.aem.component</groupId>
             <artifactId>chart-component.core</artifactId>
-            <version>0.0.1</version>
+            <version>0.1-SNAPSHOT</version>
             <type>bundle</type>
             <scope>provided</scope>
         </dependency>
