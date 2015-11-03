@@ -19,7 +19,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.faizod.aem.component</groupId>
+        <groupId>com.faizod.aem.components</groupId>
         <artifactId>chart-component</artifactId>
         <version>0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
@@ -327,12 +327,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.faizod.aem.component</groupId>
+            <groupId>com.faizod.aem.components</groupId>
             <artifactId>chart-component.it.tests</artifactId>
             <version>0.0.1</version>
         </dependency>
         <dependency>
-            <groupId>com.faizod.aem.component</groupId>
+            <groupId>com.faizod.aem.components</groupId>
             <artifactId>chart-component.core</artifactId>
             <version>0.1-SNAPSHOT</version>
         </dependency>
