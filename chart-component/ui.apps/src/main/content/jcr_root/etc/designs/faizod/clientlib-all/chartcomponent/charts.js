@@ -1,7 +1,17 @@
 /*
  * This is the comment of the function
  */
-function getNameFirst() {
-    // return the name
-    return "some value";
-}
+
+(function ($) {
+    'use strict';
+
+    // Global Variables
+    var chart = $('.faizod.chart');
+    var content = $('.faizod.chart .chart-content');
+    var contentPath = content.data('chart-path');
+
+    function load() {
+        alert("Loaded and Ready with path " + contentPath);
+    }
+
+})(jQuery);

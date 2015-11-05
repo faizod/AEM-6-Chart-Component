@@ -13,18 +13,26 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */-->
-<div class="chart"
+<div class="faizod chart"
      data-sly-use.chart="com.faizod.aem.component.core.models.ChartModel">
 
-    <div class="chart_title" data-sly-test="${properties.title}">${properties.title}</div>
+    <div class="chart-title" data-sly-test="${properties.title}">${properties.title}</div>
 
-    <pres>
+    <div class="chart-content" data-chart-path="${resource.path}">
+    </div>
+
+    <pre>
         faizod Chart-Component
         ${chart.jsonChartData}
-    </pres>
+        Path : ${resource.path}
+    </pre>
+
+    <!-- TODO: Workaround! only for development. replace with a more robust and scalable solution! -->
+    <div class="chart-data-box hidden" style="display: none;">${chart.jsonChartData}</div>
 
     <script type="text/javascript">
-        var value = '${chart.jsonChartData}';
+        var value = "${chart.jsonChartData}";
+        alert("Test");
     </script>
 
 </div>
