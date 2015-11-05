@@ -69,7 +69,6 @@ public class ExcelDatasource implements Datasource {
 
         Resource res = resourceResolver.getResource(contentNodePath);
         ValueMap readMap = res.getValueMap();
-        //ModifiableValueMap modMap = res.adaptTo(ModifiableValueMap.class);
 
         String value = readMap.get("sling:resourceType", String.class);
         if (res.getResourceType().endsWith("chartcomponent")) {

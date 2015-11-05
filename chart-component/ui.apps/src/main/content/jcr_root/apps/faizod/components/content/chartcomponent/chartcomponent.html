@@ -19,21 +19,18 @@
     <div class="chart-title" data-sly-test="${properties.title}">${properties.title}</div>
 
     <div class="chart-content" data-chart-path="${resource.path}">
+        <svg style="height:300px;"></svg>
     </div>
 
     <pre>
         faizod Chart-Component
         ${chart.jsonChartData}
         Path : ${resource.path}
+        NodeName: ${currentNode.name}
+        NodeIdentifier: ${currentNode.identifier}
     </pre>
 
     <!-- TODO: Workaround! only for development. replace with a more robust and scalable solution! -->
     <div class="chart-data-box hidden" style="display: none;">${chart.jsonChartData}</div>
-
-    <script type="text/javascript">
-        var value = "${chart.jsonChartData}";
-        alert("Test");
-    </script>
-
 </div>
 
