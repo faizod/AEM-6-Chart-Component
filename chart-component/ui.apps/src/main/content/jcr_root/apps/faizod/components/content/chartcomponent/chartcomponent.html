@@ -13,8 +13,19 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */-->
-<div class="fz_chart_title" data-sly-test="${properties.title}">${properties.title}</div>
+<div class="chart"
+     data-sly-use.chart="com.faizod.aem.component.core.models.ChartModel">
 
-<pre data-sly-use.chart="com.faizod.aem.component.core.models.ChartModel">
-faizod Chart-Component
-</pre>
+    <div class="chart_title" data-sly-test="${properties.title}">${properties.title}</div>
+
+    <pres>
+        faizod Chart-Component
+        ${chart.jsonChartData}
+    </pres>
+
+    <script type="text/javascript">
+        var value = '${chart.jsonChartData}';
+    </script>
+
+</div>
+

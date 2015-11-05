@@ -26,6 +26,18 @@
             <servicecomponent
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="faizod/components/content/helloworld"/>
+            <chartcomponent
+                    jcr:created="{Date}2015-11-04T11:19:53.400+01:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2015-11-04T11:20:15.945+01:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="faizod/components/content/chartcomponent"
+                    data="test"
+                    datasourceType="excel"
+                    fileName="sample.xlsx">
+                <file/>
+            </chartcomponent>
             <title_1
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Lorem ipsum"
