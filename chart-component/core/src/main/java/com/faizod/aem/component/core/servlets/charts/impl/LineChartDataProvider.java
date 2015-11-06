@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.Writer;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,7 +26,6 @@ public class LineChartDataProvider implements ChartDataProvider {
     @Override
     public void writeChartData(Map<Double, Double> chartData, Writer writer) {
 
-        // extract following code
         try {
             TidyJSONWriter jsonWriter = new TidyJSONWriter(writer);
             jsonWriter.array();
@@ -46,6 +46,44 @@ public class LineChartDataProvider implements ChartDataProvider {
             }
             jsonWriter.endArray();
             jsonWriter.endObject();
+            jsonWriter.endArray();
+
+        } catch (JSONException e) {
+            LOG.error("Unable to write json data. ", e);
+        }
+    }
+
+    @Override
+    public void writeMultiColumnChartData(Map<String, List<Object>> chartData, Writer writer) {
+
+        int dataColumns = chartData.get("labels").size();
+
+        try {
+            TidyJSONWriter jsonWriter = new TidyJSONWriter(writer);
+            jsonWriter.setTidy(true);
+            jsonWriter.array();
+
+            for(int index = 0;index < dataColumns;index++){
+                jsonWriter.object();
+                jsonWriter.key("key").value(chartData.get("labels").get(index));
+                jsonWriter.key("color").value(chartData.get("colors").get(index));
+                jsonWriter.key("values");
+                jsonWriter.array();
+                Iterator<Map.Entry<String, List<Object>>> iter = chartData.entrySet().iterator();
+                while (iter.hasNext()) {
+                    Map.Entry<String, List<Object>> entry = iter.next();
+                    if(entry.getKey().equals("labels") || entry.getKey().equals("colors"))
+                        continue;
+
+                    jsonWriter.object();
+                    jsonWriter.key("x").value(entry.getKey());
+                    jsonWriter.key("y").value(entry.getValue().get(index));
+                    jsonWriter.endObject();
+                }
+                jsonWriter.endArray();
+                jsonWriter.endObject();
+            }
+
             jsonWriter.endArray();
 
         } catch (JSONException e) {

@@ -6,6 +6,7 @@
 package com.faizod.aem.component.core.servlets.datasources;
 
 import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,5 +15,7 @@ import java.util.Map;
 public interface DatasourceParser {
 
     Map<Double, Double> parse(InputStream is);
+
+    Map<String, List<Object>> parseMultiColumn(InputStream inputStream);
 
 }

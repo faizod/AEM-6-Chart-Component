@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -53,7 +54,7 @@ public class ChartComponentServlet extends SlingSafeMethodsServlet {
         ChartDataProvider dataProvider = null;
         DatasourceParser datasourceParser = null;
 
-        Map<Double, Double> values = new HashMap<Double, Double>();
+        Map<String, List<Object>> values;
 
         ResourceResolver resourceResolver = request.getResourceResolver();
         // extracts the components path
@@ -82,14 +83,14 @@ public class ChartComponentServlet extends SlingSafeMethodsServlet {
         Resource fileResource = resource.getChild("file");
         InputStream inputStream = fileResource.adaptTo(InputStream.class);
 
-        values = datasourceParser.parse(inputStream);
+        values = datasourceParser.parseMultiColumn(inputStream);
 
         // convert data into a json for the specified chart type
         String chartType = "line";
         if (chartType.toLowerCase().equals("line")) {
             dataProvider = new LineChartDataProvider();
         }
-        dataProvider.writeChartData(values, response.getWriter());
+        dataProvider.writeMultiColumnChartData(values, response.getWriter());
 
 
         // more parameter if needed

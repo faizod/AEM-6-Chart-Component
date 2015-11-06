@@ -35,7 +35,7 @@
                     sling:resourceType="faizod/components/content/chartcomponent"
                     data="test"
                     datasourceType="excel"
-                    fileName="sample.xlsx">
+                    fileName="test.xlsx">
                 <file/>
             </chartcomponent>
             <title_1

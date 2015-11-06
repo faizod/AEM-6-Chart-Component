@@ -11,10 +11,6 @@ import java.util.Map;
  */
 public interface Datasource {
 
-    void readData(String contentNodePath);
-
-    Map<Double, Double> readData(String contentNodePath, ResourceResolver resourceResolver);
-
     String convertData(InputStream inputStream);
 
 }

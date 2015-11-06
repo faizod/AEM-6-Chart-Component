@@ -13,21 +13,19 @@
 
     var chartData = {};
 
-    // TODO workaround, use ajax request to
-    var data = JSON.parse($(".chart-data-box").text());
-
-    console.log("data One: " + data);
-
     var requestParams = {
         nodePath: requestData
-    }
+    };
 
-    $.get(SERVLET_PATH, requestParams, function(data, status){
-        console.log(data);
+    $.ajax({
+        method: 'GET',
+        url: SERVLET_PATH,
+        data: requestParams,
+        async: false,
+        dataType: 'json'
+    }).done(function( data ) {
         chartData = data;
-    }, "json");
-
-    console.log("Chart Data 2: " + chartData[0].values);
+    });
 
     /*
      * These lines are all chart setup. Pick and choose which chart features you
@@ -51,7 +49,7 @@
         /* Done setting the chart up? Time to render it! */// You need data...
 
         d3.select('.chart-content svg')
-            .datum(data)
+            .datum(chartData)
             .call(chart);
 
         // Update the chart when window resizes.
