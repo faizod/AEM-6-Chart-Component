@@ -28,7 +28,7 @@
                     jcr:title="Datasource"
                     sling:resourceType="granite/ui/components/foundation/container">
                 <items jcr:primaryType="nt:unstructured">
-                    <datatyp
+                    <datatype
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/foundation/form/select"
                             emptyText="Please select a type."
@@ -49,8 +49,9 @@
                                     value="excel"
                                     text="EXCEL"/>
                         </items>
-                    </datatyp>
+                    </datatype>
                     <data
+                            id="date_textarea"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/foundation/form/textarea"
                             fieldLabel="Data"

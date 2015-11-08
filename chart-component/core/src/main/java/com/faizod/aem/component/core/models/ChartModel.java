@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.InputStream;
 
 /**
- *
+ * @deprecated use the Servlet and a GET-Request to pull the data to draw a chart, this POJO is not used anymore.
  */
 @Model(adaptables=Resource.class)
 public class ChartModel {
@@ -29,7 +29,7 @@ public class ChartModel {
 
     private String jsonChartData;
 
-    @Inject @Named(value = "file")
+    @Inject @Named(value = "datasource/file")
     private InputStream inputStream;
 
     /**

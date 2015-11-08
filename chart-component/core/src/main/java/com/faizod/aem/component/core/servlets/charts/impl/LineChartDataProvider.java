@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * Implementation of the ChartDataProvider interface for line charts.
  */
 public class LineChartDataProvider implements ChartDataProvider {
 
