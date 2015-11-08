@@ -65,9 +65,8 @@
                 chart.yAxis // Chart y-axis settings
                     .axisLabel(chartData.yAxisLabel);
             }
-            /* Done setting the chart up? Time to render it! */// You need data...
+            /* Done setting the chart up? Time to render it! */
 
-            // TODO: select to the current element not general all charts!
             d3.select('#'+componentId+' .chart-content svg')
                 .datum(chartData.lines)
                 .call(chart);
