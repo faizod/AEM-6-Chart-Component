@@ -40,16 +40,19 @@
                 .showXAxis(true)
             ;
 
-        chart.xAxis // Chart x-axis settings
-            .axisLabel('Time (ms)');
+        if (chartData.xAxisLabel) {
+            chart.xAxis // Chart x-axis settings
+                .axisLabel(chartData.xAxisLabel);
+        }
 
-        chart.yAxis // Chart y-axis settings
-            .axisLabel('Voltage (v)');
-
+        if (chartData.yAxisLabel) {
+            chart.yAxis // Chart y-axis settings
+                .axisLabel(chartData.yAxisLabel);
+        }
         /* Done setting the chart up? Time to render it! */// You need data...
 
         d3.select('.chart-content svg')
-            .datum(chartData)
+            .datum(chartData.lines)
             .call(chart);
 
         // Update the chart when window resizes.

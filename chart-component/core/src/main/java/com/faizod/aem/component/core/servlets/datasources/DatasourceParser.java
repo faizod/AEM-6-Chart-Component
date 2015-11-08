@@ -5,6 +5,8 @@
  */
 package com.faizod.aem.component.core.servlets.datasources;
 
+import org.apache.sling.api.resource.Resource;
+
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;

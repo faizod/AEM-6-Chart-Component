@@ -2,10 +2,12 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
+        cq:lastModified="{Date}2015-11-08T13:17:25.048+01:00"
+        cq:lastModifiedBy="admin"
         jcr:primaryType="nt:unstructured"
         jcr:title="English"
-        pageTitle="New Project"
-        sling:resourceType="faizod/components/structure/page">
+        sling:resourceType="faizod/components/structure/page"
+        pageTitle="New Project">
         <logo
             jcr:primaryType="nt:unstructured"
             sling:resourceType="faizod/components/structure/logo"/>
@@ -21,28 +23,36 @@
             <title_0
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Service Component"
-                type="h2"
-                sling:resourceType="faizod/components/content/title"/>
+                sling:resourceType="faizod/components/content/title"
+                type="h2"/>
             <servicecomponent
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="faizod/components/content/helloworld"/>
             <chartcomponent
-                    jcr:created="{Date}2015-11-04T11:19:53.400+01:00"
-                    jcr:createdBy="admin"
-                    jcr:lastModified="{Date}2015-11-04T11:20:15.945+01:00"
+                jcr:created="{Date}2015-11-08T13:16:46.535+01:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2015-11-08T13:17:24.988+01:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="faizod/components/content/chartcomponent"
+                datasourceType="excel"
+                graphType="line"
+                title="Testgraph"
+                xAxisLabel="Years"
+                yAxisLabel="Ammount">
+                <datasource
+                    jcr:lastModified="{Date}2015-11-08T13:17:24.988+01:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="faizod/components/content/chartcomponent"
-                    data="test"
-                    datasourceType="excel"
                     fileName="test.xlsx">
-                <file/>
+                    <file/>
+                </datasource>
             </chartcomponent>
             <title_1
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Lorem ipsum"
-                type="h2"
-                sling:resourceType="faizod/components/content/title"/>
+                sling:resourceType="faizod/components/content/title"
+                type="h2"/>
             <text
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="faizod/components/content/text"

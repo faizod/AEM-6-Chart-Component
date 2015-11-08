@@ -6,8 +6,8 @@
 package com.faizod.aem.component.core.servlets.datasources.impl;
 
 import com.faizod.aem.component.core.servlets.datasources.DatasourceParser;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
@@ -128,10 +128,10 @@ public class ExcelDatasourceParser implements DatasourceParser {
     public Map<String, List<Object>> parseMultiColumn(InputStream inputStream) {
         Map<String, List<Object>> map = new LinkedHashMap<String, List<Object>>();
 
-        // Read the Excel file
+        // read in the Excel file
         try {
-            XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
-            XSSFSheet sheet = workbook.getSheetAt(0);
+            Workbook workbook = WorkbookFactory.create(inputStream);
+            Sheet sheet = workbook.getSheetAt(0);
 
             // CellRefernce or iterate over rows?
             //FIXME: Example for Table with two columns, first column label, second column value
@@ -178,6 +178,8 @@ public class ExcelDatasourceParser implements DatasourceParser {
                 map.put(label, values);
             }
         } catch (IOException e) {
+            LOG.error("");
+        } catch (InvalidFormatException e) {
             e.printStackTrace();
         }
         return map;

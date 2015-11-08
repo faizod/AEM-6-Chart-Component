@@ -18,6 +18,8 @@ import java.util.*;
 
 /**
  * Implements Datasource for Excel-Files.
+ *
+ * @deprecated
  */
 @Component
 @Service

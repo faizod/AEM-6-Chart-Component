@@ -7,6 +7,8 @@ package com.faizod.aem.component.core.servlets.charts.impl;
 
 import com.day.cq.commons.TidyJSONWriter;
 import com.faizod.aem.component.core.servlets.charts.ChartDataProvider;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.commons.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,15 +56,23 @@ public class LineChartDataProvider implements ChartDataProvider {
     }
 
     @Override
-    public void writeMultiColumnChartData(Map<String, List<Object>> chartData, Writer writer) {
+    public void writeMultiColumnChartData(Map<String, List<Object>> chartData, Resource resource, Writer writer) {
 
         int dataColumns = chartData.get("labels").size();
+
+        ValueMap properties = resource.getValueMap();
+
+        String xAxisLabel = properties.get("xAxisLabel", "");
+        String yAxisLabel = properties.get("yAxisLabel" , "");
 
         try {
             TidyJSONWriter jsonWriter = new TidyJSONWriter(writer);
             jsonWriter.setTidy(true);
-            jsonWriter.array();
+            jsonWriter.object();
+            jsonWriter.key("xAxisLabel").value(xAxisLabel);
+            jsonWriter.key("yAxisLabel").value(yAxisLabel);
 
+            jsonWriter.key("lines").array();
             for(int index = 0;index < dataColumns;index++){
                 jsonWriter.object();
                 jsonWriter.key("key").value(chartData.get("labels").get(index));
@@ -83,8 +93,8 @@ public class LineChartDataProvider implements ChartDataProvider {
                 jsonWriter.endArray();
                 jsonWriter.endObject();
             }
-
             jsonWriter.endArray();
+            jsonWriter.endObject();
 
         } catch (JSONException e) {
             LOG.error("Unable to write json data. ", e);
