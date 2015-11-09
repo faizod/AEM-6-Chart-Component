@@ -1,0 +1,9 @@
+[{
+  "name": "XYZ",
+  "color": "#FF0000",
+  "area": "false"
+},{
+  "name": "ABC",
+  "color": "#FFEECC",
+  "area": "true"
+}]
