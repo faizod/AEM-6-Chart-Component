@@ -1,13 +1,5 @@
 # JS
-chartcomponent/nvd3/lib/d3.v2.js
-chartcomponent/nvd3/lib/d3.v3.js
+chartcomponent/nvd3/d3/d3.js
 chartcomponent/nvd3/nv.d3.js
-chartcomponent/nvd3/lib/cie.js
-chartcomponent/nvd3/lib/colorbrewer.js
-chartcomponent/nvd3/lib/crossfilter.js
-chartcomponent/nvd3/lib/fisheye.js
-chartcomponent/nvd3/lib/hive.js
-chartcomponent/nvd3/lib/horizon.js
-chartcomponent/nvd3/lib/sankey.js
 
 chartcomponent/charts.js

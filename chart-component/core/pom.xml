@@ -50,6 +50,59 @@
                             artifactId2;inline=true
                         </Embed-Dependency>
                         -->
+
+                        <!--<exportcontents>
+                            org.apache.poi.*;version=${apache.poi.version},
+                            org.openxmlformats.schemas.officeDocument.x2006.customProperties;version=${apache.poi.version},
+                            org.openxmlformats.schemas.officeDocument.x2006.extendedProperties;version=${apache.poi.version},
+                            org.openxmlformats.schemas.presentationml.x2006.main;version=${apache.poi.version},
+                            org.openxmlformats.schemas.wordprocessingml.x2006.main;version=${apache.poi.version},
+                            org.apache.xmlbeans.*
+                        </exportcontents>
+                        <Embed-Dependency>
+                            poi;inline=true,
+                            poi-scratchpad;inline=true,
+                            poi-ooxml;inline=true,
+                            poi-ooxml-schemas;inline=true,
+                            xmlbeans;inline=true,
+                            dom4j;inline=true
+                        </Embed-Dependency>
+                        <Embed-Transitive>
+                            true
+                        </Embed-Transitive>
+                        <Import-Package>
+                            *,
+                            org.w3c.dom,
+                            com.sun.javadoc;resolution:=optional,
+                            com.sun.msv.datatype;resolution:=optional,
+                            com.sun.msv.datatype.xsd;resolution:=optional,
+                            com.sun.tools.javadoc;resolution:=optional,
+                            junit.framework;resolution:=optional,
+                            junit.textui;resolution:=optional,
+                            org.apache.crimson.jaxp;resolution:=optional,
+                            org.apache.tools.ant;resolution:=optional,
+                            org.apache.tools.ant.taskdefs;resolution:=optional,
+                            org.apache.tools.ant.types;resolution:=optional,
+                            org.apache.xml.resolver;resolution:=optional,
+                            org.apache.xml.resolver.tools;resolution:=optional,
+                            org.gjt.xpp;resolution:=optional,
+                            org.jaxen;resolution:=optional,
+                            org.jaxen.dom4j;resolution:=optional,
+                            org.jaxen.pattern;resolution:=optional,
+                            org.jaxen.saxpath;resolution:=optional,
+                            org.openxmlformats.schemas.officeDocument.x2006.math;resolution:=optional,
+                            org.openxmlformats.schemas.schemaLibrary.x2006.main;resolution:=optional,
+                            org.relaxng.datatype;resolution:=optional,
+                            org.xmlpull.v1;resolution:=optional,
+                            schemasMicrosoftComOfficePowerpoint;resolution:=optional,
+                            schemasMicrosoftComOfficeWord;resolution:=optional,
+                            org.apache.xmlbeans.impl.xquery.saxon;resolution:=optional,
+                            org.apache.xmlbeans.impl.xpath.saxon;resolution:=optional
+                        </Import-Package>
+                        <DynamicImport-Package>
+                            org.apache.xmlbeans.impl.schema
+                        </DynamicImport-Package>-->
+
                         <Sling-Model-Packages>
                             com.faizod.aem.component.core
                         </Sling-Model-Packages>
@@ -137,20 +190,19 @@
             <groupId>junit-addons</groupId>
             <artifactId>junit-addons</artifactId>
         </dependency>
+
+        <!-- Apache POI -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>3.13</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>3.13</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml-schemas</artifactId>
-            <version>3.13</version>
         </dependency>
     </dependencies>
 </project>

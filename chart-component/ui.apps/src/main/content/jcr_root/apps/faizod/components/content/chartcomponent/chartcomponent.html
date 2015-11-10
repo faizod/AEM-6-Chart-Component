@@ -1,7 +1,6 @@
 <!--/*
     Copyright (c) 2015 faizod GmbH & Co. KG
     Großenhainer Straße 101, D-01127 Dresden, Germany
-    All rights reserved.
   
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -20,16 +19,13 @@
 
     <div class="chart-title" data-sly-test="${properties.title}">${properties.title}</div>
 
-    <div class="chart-content" data-chart-path="${resource.path}">
-        <svg style="height:300px;">No Datsource defined.</svg>
+    <div class="chart-content" data-sly-test="${chart.show}" data-chart-path="${resource.path}">
+        <svg style="height:300px;">
+            <image x="80%" y="60%" width="20%" height="20%" xlink:href="/apps/faizod/components/content/chartcomponent/image/faizod-logo2.svg" style="opacity: .4" />
+        </svg>
     </div>
-
-    <pre data-sly-test="${wcmmode.edit}">
-        faizod Chart-Component
-        ${chart.jsonChartData}
-        Path : ${resource.path}
-        NodeName: ${currentNode.name}
-        NodeIdentifier: ${currentNode.identifier}
-    </pre>
+    <div class="chart-error-message" data-sly-test="${wcmmode.edit && !chart.show}">
+        No Datasource defined.
+    </div>
 </div>
 

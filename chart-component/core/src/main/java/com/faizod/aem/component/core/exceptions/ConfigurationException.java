@@ -14,20 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.faizod.aem.component.core.servlets.charts;
-
-import org.apache.sling.api.resource.Resource;
-
-import java.io.Writer;
-import java.util.List;
-import java.util.Map;
+package com.faizod.aem.component.core.exceptions;
 
 /**
- * Interface for DataProvider.
- *
- *
+ * Exception thrown when the Chart configuration invalid is.
  */
-public interface ChartDataProvider {
+public class ConfigurationException extends RuntimeException {
 
-    void writeMultiColumnChartData(Map<String, List<Object>> chartData, Resource resource, Writer writer);
+    public ConfigurationException() {
+    }
+
+    public ConfigurationException(String message) {
+        super(message);
+    }
+
+    public ConfigurationException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }

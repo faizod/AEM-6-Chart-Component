@@ -36,10 +36,14 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="faizod/components/content/chartcomponent"
                 datasourceType="excel"
-                graphType="line"
+                chartType="line"
                 title="Testgraph"
                 xAxisLabel="Years"
-                yAxisLabel="Ammount">
+                yAxisLabel="Ammount"
+                useGuideline="true"
+                showLegend="true"
+                showXAxis="true"
+                showYAxis="true">
                 <datasource
                     jcr:lastModified="{Date}2015-11-08T13:17:24.988+01:00"
                     jcr:lastModifiedBy="admin"

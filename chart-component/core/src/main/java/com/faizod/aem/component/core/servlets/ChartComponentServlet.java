@@ -38,8 +38,11 @@ public class ChartComponentServlet extends SlingSafeMethodsServlet {
 
     private static final String PARAM_PATH = "nodePath";
 
+    // Names of general properties
     private static final String PROP_DATASOURCE_TYPE = "datasourceType";
-    private static final String PROP_FILENAME = "fileName";
+    private static final String PROP_CHART_TYPE = "chartType";
+
+    // Supported
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
@@ -67,7 +70,7 @@ public class ChartComponentServlet extends SlingSafeMethodsServlet {
 
         String datasourceType = valueMap.get(PROP_DATASOURCE_TYPE, String.class);
 
-        // read in datasource, can be a live chart datasource
+        // read in datasource
         if (datasourceType.toLowerCase().equals("excel")) {
             datasourceParser = new ExcelDatasourceParser();
         }
@@ -85,7 +88,7 @@ public class ChartComponentServlet extends SlingSafeMethodsServlet {
         chartData = datasourceParser.parseMultiColumn(inputStream);
 
         // convert data into a json for the specified chart type
-        String chartType = valueMap.get("graphType", "line");
+        String chartType = valueMap.get(PROP_CHART_TYPE, String.class);
         if (chartType.toLowerCase().equals("line")) {
             dataProvider = new LineChartDataProvider();
         }

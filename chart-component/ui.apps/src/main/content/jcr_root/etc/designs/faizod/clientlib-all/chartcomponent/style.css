@@ -1,7 +1,6 @@
 /*
  *  Copyright (c) 2015 faizod GmbH & Co. KG
  *  Großenhainer Straße 101, D-01127 Dresden, Germany
- *  All rights reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,8 +14,18 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
-/* Text-Image component */
-.chart {
+/* Clientside CSS for Chart component */
+.faizod.chart {
     border: 1px solid black;
+}
+.faizod.chart .chart-title {
+    text-align: center;
+    font-weight: bold;
+    padding: 5px;
+}
+.faizod.chart .chart-error-message {
+    text-align: center;
+    padding: 5px;
+    background-color: #fcefa1;
+    color: #363636;
 }

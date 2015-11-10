@@ -5,18 +5,14 @@
  */
 package com.faizod.aem.component.core.servlets.datasources;
 
-import org.apache.sling.api.resource.Resource;
-
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * Parser for Datasource.
  */
 public interface DatasourceParser {
-
-    Map<Double, Double> parse(InputStream is);
 
     Map<String, List<Object>> parseMultiColumn(InputStream inputStream);
 

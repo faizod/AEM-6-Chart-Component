@@ -1,7 +1,6 @@
 /*
  *  Copyright (c) 2015 faizod GmbH & Co. KG
  *  Großenhainer Straße 101, D-01127 Dresden, Germany
- *  All rights reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -47,7 +46,9 @@
         }).done(function (data) {
             drawChart(data, componentId);
         }).fail(function (jqXHR, textStatus) {
+            debugger;
             console.log("Bad request");
+            // TODO: Error Handling, dont display anything or so!
             return;
         });
     }
@@ -59,13 +60,16 @@
 
         // chart setup
         nv.addGraph(function () {
-            var chart = nv.models.lineChart().margin({left: 100})
-                    .useInteractiveGuideline(chartData.useGuideline)
-                    .transitionDuration(350)
+            var chart = nv.models.lineChart()
+                    .margin({left: 40})
                     .showLegend(chartData.showLegend)
                     .showYAxis(chartData.showYAxis)
                     .showXAxis(chartData.showXAxis)
-                    .noData("There is no Data to display")
+                    .noData("There is no Data to display.")
+                    .options({
+                        transitionDuration: 350,
+                        useInteractiveGuideline: chartData.useGuideline
+                    })
                 ;
 
             if (chartData.showXAxis && chartData.xAxisLabel) {
