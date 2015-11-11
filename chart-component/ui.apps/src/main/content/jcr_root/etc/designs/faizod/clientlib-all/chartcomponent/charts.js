@@ -23,6 +23,8 @@
     var chart = $('.faizod.chart');
     var SERVLET_PATH = '/bin/faizod/chart';
 
+    var ERROR_MSG = 'No content to display. Please check the configuration.';
+
     /**
      * Called when the chart is created or updated.
      */
@@ -50,8 +52,7 @@
             }
             drawChart(data, componentId);
         }).fail(function (jqXHR, textStatus) {
-            debugger;
-            errorMsg.text('An error occured during loading or representing data. Please check the configuration.');
+            errorMsg.text(ERROR_MSG);
             if (errorMsg.hasClass('hidden')) {
                 errorMsg.removeClass('hidden');
             }
@@ -69,7 +70,7 @@
             "decimal": ",",
             "thousands": ".",
             "grouping": [3],
-            "currency": ["€", ""],
+            "currency": ["", " €"],
             "dateTime": "%a %b %e %X %Y",
             "date": "%d.%m.%Y",
             "time": "%H:%M:%S",
@@ -84,7 +85,7 @@
         nv.addGraph(function () {
             // chart setup and configuration
             var chart = nv.models.lineChart()
-                    .margin({left: 70})
+                    .margin({left: chartData.marginLeft})
                     .showLegend(chartData.showLegend)
                     .showYAxis(chartData.showYAxis)
                     .showXAxis(chartData.showXAxis)
@@ -97,6 +98,7 @@
 
             chart.xAxis // Chart x-axis settings
                 .axisLabel(chartData.xAxisLabel)
+                // tickValues coming soon
                 /*.tickValues(chartData.lines[0].values.map(function (d) {
                     return d.x;
                 }))*/
@@ -106,6 +108,7 @@
 
             chart.yAxis // Chart y-axis settings
                 .axisLabel(chartData.yAxisLabel)
+                .axisLabelDistance(55)
                 .tickFormat(function (d) {
                     return d3.format(chartData.yAxisFormat)(d);
                 });

@@ -54,6 +54,8 @@ public class LineChartDataProvider implements ChartDataProvider {
     private static final String PROP_X_AXIS_FORMAT = "xAxisFormat";
     private static final String PROP_Y_AXIS_FORMAT = "yAxisFormat";
 
+    private static final String PROP_MARGIN_LEFT = "marginLeft";
+
     private static final String VALUE_FALSE = "false";
 
     @Override
@@ -74,6 +76,8 @@ public class LineChartDataProvider implements ChartDataProvider {
         Boolean showLegend = Boolean.valueOf(properties.get(PROP_SHOW_LEGEND, VALUE_FALSE));
         Boolean guideline = Boolean.valueOf(properties.get(PROP_USE_GUIDELINE, VALUE_FALSE));
 
+        Integer marginLeft = Integer.valueOf(properties.get(PROP_MARGIN_LEFT, "40"));
+
         Map<Integer, Configuration> configurations = mapConfig(properties.get("config", "[]"));
 
         try {
@@ -89,6 +93,8 @@ public class LineChartDataProvider implements ChartDataProvider {
 
             jsonWriter.key(PROP_X_AXIS_FORMAT).value(xAxisFormat);
             jsonWriter.key(PROP_Y_AXIS_FORMAT).value(yAxisFormat);
+
+            jsonWriter.key(PROP_MARGIN_LEFT).value(marginLeft);
 
             jsonWriter.key("lines").array();
             for(int index = 0;index < dataColumns;index++){

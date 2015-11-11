@@ -18,6 +18,7 @@
 .faizod.chart {
     border: 1px solid black;
     min-height: 28px;
+    margin: 5px 0px;
 }
 .faizod.chart .chart-title {
     text-align: center;

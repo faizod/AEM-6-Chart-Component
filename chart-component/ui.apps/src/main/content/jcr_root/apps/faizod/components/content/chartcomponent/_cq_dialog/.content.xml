@@ -73,8 +73,9 @@
                             <link
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/foundation/hyperlink"
-                                    href="/apps/faizod/components/content/chartcomponent/sample/sample.xslx"
-                                    text="Sample Excelfile"
+                                    href="/apps/faizod/components/content/chartcomponent/sample/Sample_Costs_Sales_Profit.xlsx"
+                                    x-cq-linkchecker="skip"
+                                    text="Sample Excel-File"
                                     target="_blank"/>
                             <!--<data
                                     id="date_textarea"
@@ -163,7 +164,7 @@
                                     sling:resourceType="granite/ui/components/foundation/form/textfield"
                                     fieldLabel="Format X-Axis"
                                     name="./xAxisFormat"
-                                    fieldDescription="Defines format and scaling of the X-Axis."
+                                    fieldDescription="Defines format and scaling of the X-Axis. http://koaning.s3-website-us-west-2.amazonaws.com/html/d3format.html"
                                     tooltipPosition="right"/>
                             <showYAxis
                                     jcr:primaryType="nt:unstructured"
@@ -184,7 +185,7 @@
                                     sling:resourceType="granite/ui/components/foundation/form/textfield"
                                     fieldLabel="Format Y-Axis"
                                     name="./yAxisFormat"
-                                    fieldDescription="Defines format and scaling of the Y-Axis."
+                                    fieldDescription="Defines format and scaling of the Y-Axis. http://koaning.s3-website-us-west-2.amazonaws.com/html/d3format.html"
                                     tooltipPosition="right"/>
                             <showLegend
                                     jcr:primaryType="nt:unstructured"
@@ -204,6 +205,11 @@
                                     name="./useGuideline"
                                     fieldDescription="Hides or shows the interactive Guidline."
                                     tooltipPosition="right"/>
+                            <marginLeft
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                    fieldLabel="Mmargin leftside"
+                                    name="./marginLeft"/>
                             <jsonconfig
                                     id="config_textarea"
                                     jcr:primaryType="nt:unstructured"

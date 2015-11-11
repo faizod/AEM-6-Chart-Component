@@ -1,9 +1,13 @@
 [{
-  "name": "XYZ",
-  "color": "#FF0000",
+  "name": "Costs",
+  "color": "#ff3300",
   "area": "false"
-},{
-  "name": "ABC",
+}, {
+  "name": "Sales",
   "color": "#FFEECC",
   "area": "true"
+}, {
+  "name": "Profit",
+  "color": "#009900",
+  "area": "false"
 }]
