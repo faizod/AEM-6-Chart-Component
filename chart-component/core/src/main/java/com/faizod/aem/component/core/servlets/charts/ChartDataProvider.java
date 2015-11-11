@@ -24,8 +24,6 @@ import java.util.Map;
 
 /**
  * Interface for DataProvider.
- *
- *
  */
 public interface ChartDataProvider {
 

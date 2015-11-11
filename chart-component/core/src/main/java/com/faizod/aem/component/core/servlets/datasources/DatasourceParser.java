@@ -16,4 +16,6 @@ public interface DatasourceParser {
 
     Map<String, List<Object>> parseMultiColumn(InputStream inputStream);
 
+    boolean validate(InputStream inputStream);
+
 }

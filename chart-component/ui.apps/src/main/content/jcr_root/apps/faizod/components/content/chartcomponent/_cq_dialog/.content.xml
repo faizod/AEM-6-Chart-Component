@@ -93,7 +93,8 @@
                                     name="./datasource/file"
                                     title="Upload"
                                     uploadUrl="${suffix.path}"
-                                    useHTML5="{Boolean}true"/>
+                                    useHTML5="{Boolean}true"
+                                    mimeTypes="[application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet]"/>
                         </items>
                     </column>
                 </items>

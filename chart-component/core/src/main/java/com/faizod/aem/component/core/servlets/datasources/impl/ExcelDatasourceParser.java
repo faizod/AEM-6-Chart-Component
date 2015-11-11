@@ -7,6 +7,7 @@ package com.faizod.aem.component.core.servlets.datasources.impl;
 
 import com.faizod.aem.component.core.exceptions.DatasourceException;
 import com.faizod.aem.component.core.servlets.datasources.DatasourceParser;
+import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
 import org.slf4j.Logger;
@@ -83,5 +84,26 @@ public class ExcelDatasourceParser implements DatasourceParser {
             throw new DatasourceException("File Format not supported.", e);
         }
         return map;
+    }
+
+    @Override
+    public boolean validate(InputStream inputStream) {
+        if (inputStream == null) {
+            return false;
+        }
+
+        boolean valid = true;
+        try {
+            Workbook workbook = WorkbookFactory.create(inputStream);
+            int firstVisibleTab = workbook.getFirstVisibleTab();
+            valid = firstVisibleTab >= 0;
+        } catch (IOException e) {
+            valid = false;
+        } catch (InvalidFormatException e) {
+            valid = false;
+        } catch (EncryptedDocumentException e) {
+            valid = false;
+        }
+        return valid;
     }
 }
