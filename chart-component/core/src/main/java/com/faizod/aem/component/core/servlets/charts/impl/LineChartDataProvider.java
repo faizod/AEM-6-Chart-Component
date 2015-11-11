@@ -51,6 +51,9 @@ public class LineChartDataProvider implements ChartDataProvider {
     private static final String PROP_SHOW_LEGEND = "showLegend";
     private static final String PROP_USE_GUIDELINE = "useGuideline";
 
+    private static final String PROP_X_AXIS_FORMAT = "xAxisFormat";
+    private static final String PROP_Y_AXIS_FORMAT = "yAxisFormat";
+
     private static final String VALUE_FALSE = "false";
 
     @Override
@@ -62,6 +65,9 @@ public class LineChartDataProvider implements ChartDataProvider {
 
         String xAxisLabel = properties.get(PROP_X_AXIS_LABEL, "");
         String yAxisLabel = properties.get(PROP_Y_AXIS_LABEL, "");
+
+        String xAxisFormat = properties.get(PROP_X_AXIS_FORMAT, "");
+        String yAxisFormat = properties.get(PROP_Y_AXIS_FORMAT, "");
 
         Boolean showXAxis = Boolean.valueOf(properties.get(PROP_SHOW_X_AXIS, VALUE_FALSE));
         Boolean showYAxis = Boolean.valueOf(properties.get(PROP_SHOW_Y_AXIS, VALUE_FALSE));
@@ -80,6 +86,9 @@ public class LineChartDataProvider implements ChartDataProvider {
             jsonWriter.key(PROP_Y_AXIS_LABEL).value(yAxisLabel);
             jsonWriter.key(PROP_SHOW_LEGEND).value(showLegend);
             jsonWriter.key(PROP_USE_GUIDELINE).value(guideline);
+
+            jsonWriter.key(PROP_X_AXIS_FORMAT).value(xAxisFormat);
+            jsonWriter.key(PROP_Y_AXIS_FORMAT).value(yAxisFormat);
 
             jsonWriter.key("lines").array();
             for(int index = 0;index < dataColumns;index++){

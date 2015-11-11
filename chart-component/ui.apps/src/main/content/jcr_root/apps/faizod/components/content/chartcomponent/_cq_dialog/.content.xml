@@ -158,6 +158,13 @@
                                     sling:resourceType="granite/ui/components/foundation/form/textfield"
                                     fieldLabel="Label X-Axis"
                                     name="./xAxisLabel"/>
+                            <xAxisFormat
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                    fieldLabel="Format X-Axis"
+                                    name="./xAxisFormat"
+                                    fieldDescription="Defines format and scaling of the X-Axis."
+                                    tooltipPosition="right"/>
                             <showYAxis
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/foundation/form/checkbox"
@@ -172,6 +179,13 @@
                                     sling:resourceType="granite/ui/components/foundation/form/textfield"
                                     fieldLabel="Label Y-Axis"
                                     name="./yAxisLabel"/>
+                            <yAxisFormat
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                    fieldLabel="Format Y-Axis"
+                                    name="./yAxisFormat"
+                                    fieldDescription="Defines format and scaling of the Y-Axis."
+                                    tooltipPosition="right"/>
                             <showLegend
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/foundation/form/checkbox"

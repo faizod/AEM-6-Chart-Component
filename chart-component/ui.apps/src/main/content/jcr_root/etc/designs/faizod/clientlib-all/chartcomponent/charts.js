@@ -27,8 +27,6 @@
      * Called when the chart is created or updated.
      */
     function updateComponent(element) {
-        console.log("Update Component");
-        var input = $(element);
         var componentId = $(element).attr('id');
         var content = $(element).find('div.chart-content');
         var contentPath = content.data('chart-path');
@@ -76,15 +74,15 @@
             "date": "%d.%m.%Y",
             "time": "%H:%M:%S",
             "periods": ["AM", "PM"],
-            "days": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
-            "shortDays": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-            "months": ["Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
-            "shortMonths": ["Jän", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Dez"]
+            "days": ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"],
+            "shortDays": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+            "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+            "shortMonths": ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
         });
         d3.format = d3_locale_deDE.numberFormat;
 
-        // chart setup
         nv.addGraph(function () {
+            // chart setup and configuration
             var chart = nv.models.lineChart()
                     .margin({left: 70})
                     .showLegend(chartData.showLegend)
@@ -97,26 +95,22 @@
                     })
                 ;
 
-
             chart.xAxis // Chart x-axis settings
                 .axisLabel(chartData.xAxisLabel)
-                .tickValues(chartData.lines[0].values.map(function (d) {
+                /*.tickValues(chartData.lines[0].values.map(function (d) {
                     return d.x;
-                }))
-                // X-Axis values as String
+                }))*/
                 .tickFormat(function (d) {
-                    return d3.format('d')(d);
+                    return d3.format(chartData.xAxisFormat)(d);
                 });
-
 
             chart.yAxis // Chart y-axis settings
                 .axisLabel(chartData.yAxisLabel)
                 .tickFormat(function (d) {
-                    return d3.format(',.2f')(d);
+                    return d3.format(chartData.yAxisFormat)(d);
                 });
 
-            /* Done setting the chart up? Time to render it! */
-
+            // render the chart
             d3.select('#' + componentId + ' .chart-content svg')
                 .datum(chartData.lines)
                 .call(chart);
@@ -130,7 +124,6 @@
     }
 
     chart.each(function () {
-        console.log("Initial paint component");
         updateComponent(this);
     });
 
