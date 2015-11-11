@@ -30,8 +30,10 @@
         console.log("Update Component");
         var input = $(element);
         var componentId = $(element).attr('id');
-        var content = $(input[0]).find('div.chart-content');
+        var content = $(element).find('div.chart-content');
         var contentPath = content.data('chart-path');
+
+        var errorMsg = $(element).find('div.chart-error-message');
 
         // Pulls the chart data from ChartDataServlet by a simple GET-Request.
         var requestParams = {
@@ -43,13 +45,19 @@
             data: requestParams,
             async: false,
             dataType: 'json'
-        }).done(function (data) {
+        }).success(function (data) {
+            content.removeClass('hidden');
+            if (!errorMsg.hasClass('hidden')) {
+                errorMsg.addClass('hidden');
+            }
             drawChart(data, componentId);
         }).fail(function (jqXHR, textStatus) {
             debugger;
-            console.log("Bad request");
-            // TODO: Error Handling, dont display anything or so!
-            return;
+            errorMsg.text('An error occured during loading or representing data. Please check the configuration.');
+            if (errorMsg.hasClass('hidden')) {
+                errorMsg.removeClass('hidden');
+            }
+            content.addClass('hidden');
         });
     }
 
@@ -58,10 +66,27 @@
      */
     function drawChart(chartData, componentId) {
 
+        // German localization
+        var d3_locale_deDE = d3.locale({
+            "decimal": ",",
+            "thousands": ".",
+            "grouping": [3],
+            "currency": ["€", ""],
+            "dateTime": "%a %b %e %X %Y",
+            "date": "%d.%m.%Y",
+            "time": "%H:%M:%S",
+            "periods": ["AM", "PM"],
+            "days": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+            "shortDays": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+            "months": ["Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+            "shortMonths": ["Jän", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Dez"]
+        });
+        d3.format = d3_locale_deDE.numberFormat;
+
         // chart setup
         nv.addGraph(function () {
             var chart = nv.models.lineChart()
-                    .margin({left: 40})
+                    .margin({left: 70})
                     .showLegend(chartData.showLegend)
                     .showYAxis(chartData.showYAxis)
                     .showXAxis(chartData.showXAxis)
@@ -72,15 +97,24 @@
                     })
                 ;
 
-            if (chartData.showXAxis && chartData.xAxisLabel) {
-                chart.xAxis // Chart x-axis settings
-                    .axisLabel(chartData.xAxisLabel);
-            }
 
-            if (chartData.showYAxis && chartData.yAxisLabel) {
-                chart.yAxis // Chart y-axis settings
-                    .axisLabel(chartData.yAxisLabel);
-            }
+            chart.xAxis // Chart x-axis settings
+                .axisLabel(chartData.xAxisLabel)
+                .tickValues(chartData.lines[0].values.map(function (d) {
+                    return d.x;
+                }))
+                // X-Axis values as String
+                .tickFormat(function (d) {
+                    return d3.format('d')(d);
+                });
+
+
+            chart.yAxis // Chart y-axis settings
+                .axisLabel(chartData.yAxisLabel)
+                .tickFormat(function (d) {
+                    return d3.format(',.2f')(d);
+                });
+
             /* Done setting the chart up? Time to render it! */
 
             d3.select('#' + componentId + ' .chart-content svg')

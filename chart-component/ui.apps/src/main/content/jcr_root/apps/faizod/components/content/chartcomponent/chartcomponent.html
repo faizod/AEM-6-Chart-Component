@@ -15,16 +15,19 @@
     limitations under the License.
 */-->
 <div id="${currentNode.name}" class="faizod chart"
-     data-sly-use.chart="com.faizod.aem.component.core.models.ChartModel">
+     data-sly-use.chart="com.faizod.aem.component.core.models.ChartModel"
+     data-sly-test="${(chart.valid && (wcmmode.disabled || wcmmode.preview)) || (!wcmmode.disabled || !wcmmode.preview)}">
 
     <div class="chart-title" data-sly-test="${properties.title}">${properties.title}</div>
 
     <div class="chart-content" data-sly-test="${chart.show}" data-chart-path="${resource.path}">
         <svg style="height:300px;">
-            <image x="80%" y="60%" width="20%" height="20%" xlink:href="/apps/faizod/components/content/chartcomponent/image/faizod-logo2.svg" style="opacity: .4" />
+            <image x="80%" y="60%" width="20%" height="20%"
+                   xlink:href="/apps/faizod/components/content/chartcomponent/image/faizod-logo.svg"
+                   style="opacity: .4" />
         </svg>
     </div>
-    <div class="chart-error-message" data-sly-test="${wcmmode.edit && !chart.show}">
+    <div class="chart-error-message" > <!--data-sly-test="${wcmmode.edit && (!chart.show || !chart.valid)}"> -->
         No Datasource defined.
     </div>
 </div>

@@ -37,9 +37,9 @@
                 sling:resourceType="faizod/components/content/chartcomponent"
                 datasourceType="excel"
                 chartType="line"
-                title="Testgraph"
-                xAxisLabel="Years"
-                yAxisLabel="Ammount"
+                title="Sample Cost-Sales-Profit"
+                xAxisLabel="Weeks"
+                yAxisLabel=""
                 useGuideline="true"
                 showLegend="true"
                 showXAxis="true"
@@ -48,7 +48,7 @@
                     jcr:lastModified="{Date}2015-11-08T13:17:24.988+01:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    fileName="test.xlsx">
+                    fileName="sample.xlsx">
                     <file/>
                 </datasource>
             </chartcomponent>

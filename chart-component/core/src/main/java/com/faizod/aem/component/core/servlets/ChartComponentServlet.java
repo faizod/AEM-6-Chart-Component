@@ -1,10 +1,23 @@
 /*
  * Copyright (c) 2015 faizod GmbH & Co. KG
  * Großenhainer Straße 101, D-01127 Dresden, Germany
- * All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.faizod.aem.component.core.servlets;
 
+import com.faizod.aem.component.core.exceptions.ConfigurationException;
+import com.faizod.aem.component.core.exceptions.DatasourceException;
 import com.faizod.aem.component.core.servlets.charts.ChartDataProvider;
 import com.faizod.aem.component.core.servlets.charts.impl.LineChartDataProvider;
 import com.faizod.aem.component.core.servlets.datasources.DatasourceParser;
@@ -28,8 +41,9 @@ import java.util.Map;
 
 /**
  * Servlet for the faizod Chart Component.
+ * Retrieves and aggregates the chart data and writes the aggregated data as json into the response.
  * <p>
- * Only supports a GET request which returns the ready to use chart data as json.
+ * Only supports GET requests.
  */
 @SlingServlet(paths = {"/bin/faizod/chart"}, methods = {"GET"})
 public class ChartComponentServlet extends SlingSafeMethodsServlet {
@@ -50,56 +64,63 @@ public class ChartComponentServlet extends SlingSafeMethodsServlet {
 
         LOG.info("Handle Request...");
 
-        ChartDataProvider dataProvider = null;
-        DatasourceParser datasourceParser = null;
+        ChartDataProvider dataProvider;
+        DatasourceParser datasourceParser;
 
-        Map<String, List<Object>> chartData;
+        Map<Object, List<Object>> chartData;
 
         ResourceResolver resourceResolver = request.getResourceResolver();
         // extracts the components path
         String path = request.getParameter(PARAM_PATH);
 
-        if (path == null || path.isEmpty()) {
-            LOG.warn("No Chart component defined.");
-            errorResponse(response);
-            return;
+        try {
+            if (path == null || path.isEmpty()) {
+                LOG.warn("No Chart component found.");
+                throw new ConfigurationException("No Chart component found.");
+            }
+
+            Resource resource = resourceResolver.getResource(path);
+            ValueMap valueMap = resource.getValueMap();
+
+            String datasourceType = valueMap.get(PROP_DATASOURCE_TYPE, String.class);
+            // read in datasource
+            if (datasourceType.toLowerCase().equals("excel")) {
+                datasourceParser = new ExcelDatasourceParser();
+            } else {
+                // defaults to Excel
+                datasourceParser = new ExcelDatasourceParser();
+            }
+
+            Resource fileResource = resource.getChild("datasource/file");
+            if (fileResource == null) {
+                LOG.warn("No Datasource defined.");
+                throw new DatasourceException("");
+            }
+            InputStream inputStream = fileResource.adaptTo(InputStream.class);
+
+            chartData = datasourceParser.parseMultiColumn(inputStream);
+
+            String chartType = valueMap.get(PROP_CHART_TYPE, String.class);
+            // convert data into a json for the specified chart type
+            if (chartType.toLowerCase().equals("line")) {
+                dataProvider = new LineChartDataProvider();
+            } else {
+                // defaults to line chart
+                dataProvider = new LineChartDataProvider();
+            }
+
+            dataProvider.writeMultiColumnChartData(chartData, resource, response.getWriter());
+        } catch (DatasourceException e) {
+            errorResponse(response, HttpServletResponse.SC_NOT_FOUND);
+        } catch (ConfigurationException e) {
+            errorResponse(response, HttpServletResponse.SC_CONFLICT);
+        } catch (Exception e) {
+            e.printStackTrace();
+            errorResponse(response, HttpServletResponse.SC_NOT_IMPLEMENTED);
         }
-
-        Resource resource = resourceResolver.getResource(path);
-        ValueMap valueMap = resource.getValueMap();
-
-        String datasourceType = valueMap.get(PROP_DATASOURCE_TYPE, String.class);
-
-        // read in datasource
-        if (datasourceType.toLowerCase().equals("excel")) {
-            datasourceParser = new ExcelDatasourceParser();
-        }
-        // TODO implement all parser
-
-
-        Resource fileResource = resource.getChild("datasource/file");
-        if (fileResource == null) {
-            LOG.warn("No Datasource fdefined.");
-            errorResponse(response);
-            return;
-        }
-        InputStream inputStream = fileResource.adaptTo(InputStream.class);
-
-        chartData = datasourceParser.parseMultiColumn(inputStream);
-
-        // convert data into a json for the specified chart type
-        String chartType = valueMap.get(PROP_CHART_TYPE, String.class);
-        if (chartType.toLowerCase().equals("line")) {
-            dataProvider = new LineChartDataProvider();
-        }
-        dataProvider.writeMultiColumnChartData(chartData, resource, response.getWriter());
     }
 
-    private void processRequest() {
-
-    }
-
-    private void errorResponse(SlingHttpServletResponse response) {
-        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+    private void errorResponse(SlingHttpServletResponse response, int status) {
+        response.setStatus(status);
     }
 }

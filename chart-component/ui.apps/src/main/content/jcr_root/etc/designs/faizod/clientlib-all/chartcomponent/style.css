@@ -17,6 +17,7 @@
 /* Clientside CSS for Chart component */
 .faizod.chart {
     border: 1px solid black;
+    min-height: 28px;
 }
 .faizod.chart .chart-title {
     text-align: center;
@@ -28,4 +29,8 @@
     padding: 5px;
     background-color: #fcefa1;
     color: #363636;
+}
+.faizod.chart .chart-error-message.hidden,
+.faizod.chart .chart-content.hidden {
+    display: none;
 }

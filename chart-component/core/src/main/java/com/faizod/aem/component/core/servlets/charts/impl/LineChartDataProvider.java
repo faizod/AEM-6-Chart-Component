@@ -54,7 +54,7 @@ public class LineChartDataProvider implements ChartDataProvider {
     private static final String VALUE_FALSE = "false";
 
     @Override
-    public void writeMultiColumnChartData(Map<String, List<Object>> chartData, Resource resource, Writer writer) {
+    public void writeMultiColumnChartData(Map<Object, List<Object>> chartData, Resource resource, Writer writer) {
 
         int dataColumns = chartData.get(KEY_LABELS).size();
 
@@ -102,9 +102,9 @@ public class LineChartDataProvider implements ChartDataProvider {
                 }
                 jsonWriter.key("values");
                 jsonWriter.array();
-                Iterator<Map.Entry<String, List<Object>>> iter = chartData.entrySet().iterator();
+                Iterator<Map.Entry<Object, List<Object>>> iter = chartData.entrySet().iterator();
                 while (iter.hasNext()) {
-                    Map.Entry<String, List<Object>> entry = iter.next();
+                    Map.Entry<Object, List<Object>> entry = iter.next();
                     if(entry.getKey().equals(KEY_LABELS) || entry.getKey().equals(KEY_COLORS))
                         continue;
 
@@ -119,7 +119,7 @@ public class LineChartDataProvider implements ChartDataProvider {
             jsonWriter.endArray();
             jsonWriter.endObject();
 
-        } catch (JSONException e) {
+        } catch (Exception e) {
             LOG.error("Unable to write json data. ", e);
             throw new ConfigurationException("Unable to write json data. ", e);
         }

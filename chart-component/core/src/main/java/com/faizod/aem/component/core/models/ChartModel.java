@@ -16,6 +16,8 @@
  */
 package com.faizod.aem.component.core.models;
 
+import com.faizod.aem.component.core.servlets.datasources.DatasourceParser;
+import com.faizod.aem.component.core.servlets.datasources.impl.ExcelDatasourceParser;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
@@ -39,14 +41,27 @@ public class ChartModel {
 
     private boolean show = true;
 
+    private boolean valid = false;
+
+    private DatasourceParser datasourceParser;
+
     @PostConstruct
     protected void init() {
         if ((this.data == null || this.data.isEmpty()) && this.inputStream == null) {
             this.show = false;
         }
+
+        if (inputStream != null) {
+            datasourceParser = new ExcelDatasourceParser();
+            valid = datasourceParser.validate(inputStream);
+        }
     }
 
     public boolean getShow() {
         return this.show;
+    }
+
+    public boolean isValid() {
+        return valid;
     }
 }
