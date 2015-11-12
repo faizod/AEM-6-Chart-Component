@@ -27,5 +27,8 @@ import java.util.Map;
  */
 public interface ChartDataProvider {
 
+    /**
+     *
+     */
     void writeMultiColumnChartData(Map<Object, List<Object>> chartData, Resource resource, Writer writer);
 }

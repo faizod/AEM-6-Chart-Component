@@ -14,30 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.faizod.aem.component.core.servlets.datasources;
-
-import java.io.InputStream;
-import java.util.List;
-import java.util.Map;
+package com.faizod.aem.component.core.models;
 
 /**
- * Interface of the Datasource Parser.
- *
- * The Parser is responsible for reading and extracting chart data from various kinds of datasource,
- * like excel, json or csv files.
+ * JUnit Test verifying the ChartModel.
  */
-public interface DatasourceParser {
-
-    /**
-     * Parses the Datasource.
-     *
-     * Returns chart data as a Map.
-     */
-    Map<Object, List<Object>> parseMultiColumn(InputStream inputStream);
-
-    /**
-     * Validates the Datasource.
-     */
-    boolean validate(InputStream inputStream);
-
+public class TestChartModel {
 }

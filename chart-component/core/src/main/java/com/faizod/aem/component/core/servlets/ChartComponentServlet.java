@@ -43,7 +43,7 @@ import java.util.Map;
  * Servlet for the faizod Chart Component.
  * Retrieves and aggregates the chart data and writes the aggregated data as json into the response.
  * <p>
- * Only supports GET requests.
+ * Supports only GET requests.
  */
 @SlingServlet(paths = {"/bin/faizod/chart"}, methods = {"GET"})
 public class ChartComponentServlet extends SlingSafeMethodsServlet {

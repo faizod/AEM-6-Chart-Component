@@ -44,6 +44,7 @@ public class LineChartDataProvider implements ChartDataProvider {
     private static final String KEY_LABELS = "labels";
     private static final String KEY_COLORS = "colors";
 
+    // Property names
     private static final String PROP_X_AXIS_LABEL = "xAxisLabel";
     private static final String PROP_Y_AXIS_LABEL = "yAxisLabel";
     private static final String PROP_SHOW_X_AXIS = "showXAxis";
@@ -57,11 +58,18 @@ public class LineChartDataProvider implements ChartDataProvider {
     private static final String PROP_MARGIN_LEFT = "marginLeft";
 
     private static final String VALUE_FALSE = "false";
+    private static final String VALUE_TRUE = "true";
 
     @Override
     public void writeMultiColumnChartData(Map<Object, List<Object>> chartData, Resource resource, Writer writer) {
 
-        int dataColumns = chartData.get(KEY_LABELS).size();
+        // determine the number of Columns
+        int dataColumns = 0;
+        if (chartData.containsKey(KEY_LABELS)) {
+            dataColumns = chartData.get(KEY_LABELS).size();
+        } else {
+            dataColumns = chartData.values().iterator().next().size();
+        }
 
         ValueMap properties = resource.getValueMap();
 
@@ -104,16 +112,22 @@ public class LineChartDataProvider implements ChartDataProvider {
                 jsonWriter.object();
                 if (config != null && config.getName() != null && !config.getName().isEmpty()) {
                     jsonWriter.key("key").value(config.getName());
-                } else {
+                } else if (chartData.get(KEY_LABELS).size() > index) {
                     jsonWriter.key("key").value(chartData.get(KEY_LABELS).get(index));
+                } else {
+                    jsonWriter.key("key").value("Not defined");
                 }
+
                 if (config != null && config.getColor() != null && !config.getColor().isEmpty()) {
                     jsonWriter.key("color").value(config.getColor());
-                } else {
+                } else if (chartData.get(KEY_COLORS).size() > index){
                     jsonWriter.key("color").value(chartData.get(KEY_COLORS).get(index));
+                } else {
+                    jsonWriter.key("color").value("#000000");
                 }
+
                 if (config != null && config.isArea()) {
-                    jsonWriter.key("area").value("true");
+                    jsonWriter.key("area").value(VALUE_TRUE);
                 }
                 jsonWriter.key("values");
                 jsonWriter.array();

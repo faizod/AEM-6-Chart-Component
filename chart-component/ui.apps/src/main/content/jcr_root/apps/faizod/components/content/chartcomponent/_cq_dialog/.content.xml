@@ -142,7 +142,7 @@
                             <marginLeft
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/foundation/form/textfield"
-                                    fieldLabel="Mmargin leftside"
+                                    fieldLabel="Margin leftside"
                                     name="./marginLeft"/>
                             <jsonconfig
                                     id="config_textarea"
