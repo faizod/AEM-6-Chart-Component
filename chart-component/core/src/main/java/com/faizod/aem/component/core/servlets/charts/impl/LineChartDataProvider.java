@@ -35,6 +35,7 @@ import java.util.Map;
 
 /**
  * Implementation of the ChartDataProvider interface for line charts.
+ *
  */
 public class LineChartDataProvider implements ChartDataProvider {
 
@@ -63,11 +64,13 @@ public class LineChartDataProvider implements ChartDataProvider {
     @Override
     public void writeMultiColumnChartData(Map<Object, List<Object>> chartData, Resource resource, Writer writer) {
 
-        // determine the number of Columns
+        // determine the number of columns / data lines
         int dataColumns = 0;
         if (chartData.containsKey(KEY_LABELS)) {
+            // by the number of provided labels
             dataColumns = chartData.get(KEY_LABELS).size();
         } else {
+            // or by the number of columns from first row of values
             dataColumns = chartData.values().iterator().next().size();
         }
 
@@ -105,7 +108,7 @@ public class LineChartDataProvider implements ChartDataProvider {
             jsonWriter.key(PROP_MARGIN_LEFT).value(marginLeft);
 
             jsonWriter.key("lines").array();
-            for(int index = 0;index < dataColumns;index++){
+            for (int index = 0; index < dataColumns; index++) {
 
                 Configuration config = configurations.get(index);
 
@@ -120,7 +123,7 @@ public class LineChartDataProvider implements ChartDataProvider {
 
                 if (config != null && config.getColor() != null && !config.getColor().isEmpty()) {
                     jsonWriter.key("color").value(config.getColor());
-                } else if (chartData.get(KEY_COLORS).size() > index){
+                } else if (chartData.get(KEY_COLORS).size() > index) {
                     jsonWriter.key("color").value(chartData.get(KEY_COLORS).get(index));
                 } else {
                     jsonWriter.key("color").value("#000000");
@@ -134,7 +137,7 @@ public class LineChartDataProvider implements ChartDataProvider {
                 Iterator<Map.Entry<Object, List<Object>>> iter = chartData.entrySet().iterator();
                 while (iter.hasNext()) {
                     Map.Entry<Object, List<Object>> entry = iter.next();
-                    if(entry.getKey().equals(KEY_LABELS) || entry.getKey().equals(KEY_COLORS))
+                    if (entry.getKey().equals(KEY_LABELS) || entry.getKey().equals(KEY_COLORS))
                         continue;
 
                     jsonWriter.object();
@@ -159,7 +162,7 @@ public class LineChartDataProvider implements ChartDataProvider {
         Map<Integer, Configuration> configurations = new HashMap<Integer, Configuration>();
         try {
             JSONArray array = new JSONArray(jsonConfig);
-            for (int i=0; i < array.length(); i++) {
+            for (int i = 0; i < array.length(); i++) {
                 JSONObject obj = array.getJSONObject(i);
                 String name = obj.getString("name");
                 String color = obj.getString("color");

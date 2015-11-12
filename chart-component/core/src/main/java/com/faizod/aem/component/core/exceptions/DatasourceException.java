@@ -17,7 +17,7 @@
 package com.faizod.aem.component.core.exceptions;
 
 /**
- * Exception thrown when the datasource is corrupt or not supported.
+ * Exception thrown when the datasource is corrupted or not supported.
  */
 public class DatasourceException extends RuntimeException {
 

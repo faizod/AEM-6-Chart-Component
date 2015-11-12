@@ -29,7 +29,7 @@ import java.util.Map;
 public interface DatasourceParser {
 
     /**
-     * Parses the Datasource.
+     * Reads and parses the Datasource.
      *
      * Returns chart data as a Map.
      */

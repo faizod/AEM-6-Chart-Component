@@ -28,7 +28,8 @@ import java.util.Map;
 public interface ChartDataProvider {
 
     /**
-     *
+     * Takes the chart data and chart configuration, merges data and configuration in one object and writes
+     * the final data as a json object into the provided writer.
      */
     void writeMultiColumnChartData(Map<Object, List<Object>> chartData, Resource resource, Writer writer);
 }

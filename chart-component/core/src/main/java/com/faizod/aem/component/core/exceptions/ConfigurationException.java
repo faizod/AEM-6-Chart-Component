@@ -17,7 +17,7 @@
 package com.faizod.aem.component.core.exceptions;
 
 /**
- * Exception thrown when the Chart configuration invalid is.
+ * Exception thrown when the chart configuration invalid is.
  */
 public class ConfigurationException extends RuntimeException {
 
