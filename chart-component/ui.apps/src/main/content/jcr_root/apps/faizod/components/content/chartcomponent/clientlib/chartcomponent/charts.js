@@ -35,7 +35,7 @@
 
         var errorMsg = $(element).find('div.chart-error-message');
 
-        // Pulls the chart data from ChartDataServlet by a simple GET-Request.
+        // Pulls the chart data and configuration from ChartDataServlet by a simple GET-Request.
         var requestParams = {
             nodePath: contentPath
         };
@@ -113,7 +113,7 @@
                     return d3.format(chartData.yAxisFormat)(d);
                 });
 
-            // render the chart
+            // Render the chart
             d3.select('#' + componentId + ' .chart-content svg')
                 .datum(chartData.lines)
                 .call(chart);

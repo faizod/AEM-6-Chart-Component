@@ -3,4 +3,4 @@
     jcr:primaryType="cq:ClientLibraryFolder"
     categories="[fz.all]"
     dependencies="[cq.jquery]"
-    embed="[fz.site,fz.page,fz.topnav,fz.colctrl,fz.textimage]"/>
+    embed="[fz.site,fz.page,fz.topnav,fz.colctrl,fz.textimage,fz.chartcomponent]"/>

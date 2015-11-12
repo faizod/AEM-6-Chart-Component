@@ -1,0 +1,5 @@
+# JS
+chartcomponent/nvd3/d3/d3.min.js
+chartcomponent/nvd3/nv.d3.min.js
+
+chartcomponent/charts.js
