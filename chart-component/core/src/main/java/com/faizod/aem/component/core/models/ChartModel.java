@@ -39,7 +39,7 @@ public class ChartModel {
     @Inject @Named(value = "data") @Optional
     private String data;
 
-    private boolean show = true;
+    private boolean configured = true;
 
     private boolean valid = false;
 
@@ -48,17 +48,17 @@ public class ChartModel {
     @PostConstruct
     protected void init() {
         if ((this.data == null || this.data.isEmpty()) && this.inputStream == null) {
-            this.show = false;
+            this.configured = false;
         }
 
         if (inputStream != null) {
             datasourceParser = new ExcelDatasourceParser();
-            valid = datasourceParser.validate(inputStream);
+            this.valid = datasourceParser.validate(inputStream);
         }
     }
 
-    public boolean getShow() {
-        return this.show;
+    public boolean isConfigured() {
+        return this.configured;
     }
 
     public boolean isValid() {

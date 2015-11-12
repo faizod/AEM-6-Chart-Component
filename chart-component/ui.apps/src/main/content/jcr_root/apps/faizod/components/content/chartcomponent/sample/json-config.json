@@ -1,13 +1,13 @@
 [{
   "name": "Costs",
-  "color": "#ff3300",
+  "color": "#4285F4",
   "area": "false"
 }, {
   "name": "Sales",
-  "color": "#FFEECC",
-  "area": "true"
+  "color": "#DB4437",
+  "area": "false"
 }, {
   "name": "Profit",
-  "color": "#009900",
-  "area": "false"
+  "color": "#F4B400",
+  "area": "true"
 }]
