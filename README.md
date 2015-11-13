@@ -1,18 +1,29 @@
 # faizod.AEM-Chart Component
 
-Desciption coming soon ...
+    * AEM 6 Component
+    * helps you to create complexe and great looking business charts in zero time
+    * provides a chart types which are fully configurable
+
 
 ## Features
 
-coming soon ...
+Until now the following features are implemented:
+
+    * import chart data from excel files, supported formats are Excel 2007 and Excel 2010
+    * draws line charts
+        * (customizable labels for x and y axis)
+        * customizable formating of the axis labels
+        * interactive guidelines
+        * visualization of each line can be configured, for example: single lines can be drawn as areas (Flächendarstellung), the color and label of each line can be individually defined
 
 ## Installation
 
-coming soon ...
+    * short description how to build and install our bundle (over the package explorer, with screenshot)
+    * reuse already existing build manual
 
 ### How to build
 
-To build all the modules run in the project root directory the following command with Maven 3:
+To build all the modules run in the project root directory the following command with Maven at leased 3.1.x:
 
     mvn clean install
 
@@ -30,15 +41,22 @@ Or to deploy only the bundle to the author, run
 
 ## Quick Start
 
-coming soon ...
+    comming soon...
 
 ## Plans for the Future
 
-coming soon ...
+plans for the future
+
+    * more chart types (bar, pie chart, stacked Area)
+        *line with bar chart
+    * more import formats (json, csv, live!?)
+    * animated charts?
  
 ## 3rd Party Libraries
 
-coming soon ...
+    * Apache POI - the Java API for Microsoft Documents, Version 3.13 https://poi.apache.org/
+    * D3.js - Data-Driven Documents https://github.com/mbostock/d3/
+    * NVD3.js - A reusable D3 charting library https://github.com/novus/nvd3
 
 ## License
 
