@@ -7,7 +7,7 @@
         jcr:primaryType="nt:unstructured"
         jcr:title="English"
         sling:resourceType="faizod/components/structure/page"
-        pageTitle="faizod Chart Sample">
+        pageTitle="faizod.AEM-6-Chart Samples">
         <logo
             jcr:primaryType="nt:unstructured"
             sling:resourceType="faizod/components/structure/logo"/>
@@ -22,7 +22,7 @@
             sling:resourceType="wcm/foundation/components/parsys">
             <title_0
                 jcr:primaryType="nt:unstructured"
-                jcr:title="faizod Chart Component"
+                jcr:title="faizod.AEM-6-Chart-Component"
                 sling:resourceType="faizod/components/content/title"
                 type="h2"/>
             <chartcomponent
