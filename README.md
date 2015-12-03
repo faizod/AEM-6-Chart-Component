@@ -1,5 +1,5 @@
 <h3 align="center">
-  <img src="assets/LogoFaizodGrey4.svg" alt="faizod Logo" />
+  <img src="assets/LogoFaizodGrey4.png" alt="faizod Logo" />
 </h3>
 
 
